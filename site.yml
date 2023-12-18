@@ -5,6 +5,15 @@
   become: true
   tasks:
 
+  - name: copy default html file for site
+    tags: apache2
+    copy:
+      src: default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+
   - name: update repository index
     tags: repository,index
     apt:
